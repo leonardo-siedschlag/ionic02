@@ -23,12 +23,12 @@ import { MovieProvider } from '../providers/movie/movie';
     TabsPage,
     IntroPage,
     FeedPage,
-    HttpModule
+    
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
