@@ -1,0 +1,23 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="abrirPerfil()"><!--vem la do configuracao.ts serve para abrirPefil-->
+        Perfil
+      </button>
+      <button ion-item (click)="abrirSobre()">
+        Sobre
+      </button>
+     
+      <button ion-item (click)="fecharMenu()">
+        Fechar menu
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
