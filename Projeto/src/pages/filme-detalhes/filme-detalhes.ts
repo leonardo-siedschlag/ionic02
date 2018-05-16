@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MovieProvider } from '../../providers/movie/movie';
+
 
 /**
  * Generated class for the FilmeDetalhesPage page.
@@ -12,14 +14,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-filme-detalhes',
   templateUrl: 'filme-detalhes.html',
+  // providers:[MovieProvider]
 })
 export class FilmeDetalhesPage {
   public filme;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public filmeId;
+  // public movieProvider:MovieProvider;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public movieProvider: MovieProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FilmeDetalhesPage');
-  }
+    this.filmeId = this.navParams.get("id");//isso vem la do feed.ts
+                                          //pegando o parametro id da funcao abrirDetalhes
+   
+  this.movieProvider.PegaId(this.filmeId).subscribe(
 
+    data=>{
+        
+        this.filme = data
+        console.log("retorno com sucesso")
+        console.log(data)
+
+    },error=>{
+
+      console.log("erro")
+    }
+  )
+   
+   
+                                          // this.movieProvider.PegaDetalhes(this.filmeId).subscribe(data=>{//pegando a resposta direto do HTTP
+       // let retorno=(data as any);
+        //console.log(retorno)                                                        //HTTP E U OBSERVABLE
+                                                                //TEM SUBSCRIBE,QUE AVISA QUANDO
+                                                                //RECEBER RESPOSTA DO WEB    
+
+   // },error=>{
+      // console.log("errou")
+   // });
+    
+  
+}
 }

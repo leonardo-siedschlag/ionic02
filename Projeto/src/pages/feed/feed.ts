@@ -40,10 +40,11 @@ export class FeedPage {
   ) {
   }
 
-  abrirDetalhes(){
-     
-    this.navCtrl.push(FilmeDetalhesPage);
-
+  abrirDetalhes(filme){
+    console.log(filme)             //esta passando por meio da variavel id, o filme.id para a pagina filmedetalhespage
+    this.navCtrl.push(FilmeDetalhesPage,{id:filme.id});//push 3 parametros que pode usar, um e pagina 
+                                        //o segundo e um objeto que manda  dados naquela pagina
+    
   }
   
   ionViewDidLoad() {   //isso vem la do provider
@@ -55,18 +56,10 @@ export class FeedPage {
     data=>{// => abre e fecha chave e com se fizesse uma funcao na mesma linha
         
                           
-            //this.lista_filmes = data;
-            //console.log(obj)
-            //console.log(obj);
-            //this.lista_filmes = obj;
-            //console.log(obj);  
-     
-      
-        
-      
+              
         let obj = data as any
         
-        console.log(obj)
+       
         this.lista = obj.results;   
         
         //console.log(this.lista)
